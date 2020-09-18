@@ -31,7 +31,6 @@
 				<td>Employee Name</td>
 				<td>Designation</td>
 				<td>Salary</td>
-				<td>Action</td>
 				</tr>
 				<% 
 				ArrayList<ArrayList<String>> ar = (ArrayList<ArrayList<String>>)request.getAttribute("ar");
@@ -43,15 +42,19 @@
 <td><%=ar.get(1).get(i) %></td>
 <td><%=ar.get(2).get(i) %></td>
 <td><%=ar.get(3).get(i) %></td>
-<td><form:form modelAttribute="delete" action="/delete" method="post"><button type="submit">Delete</button></form:form></td>
 </tr>
 <%
 				}
 %>
-<tr><td><form:form modelAttribute="add" action="/add" method="post"><button type="submit">Add Employee</button></form:form>
-			</div></td></tr>
 
-
+</table>
+<table>
+<br>
+<tr><td><input type="button"  onclick="location.href='/add'" value="Add New Employee" >
+			</td><td><input type="button"  onclick="location.href='/delete'" value="Delete Employee" ></td>
+			<td><input type="button"  onclick="location.href='/update'" value="Update Employee" ></td></tr>
+</table>
+</div>
 
 
 		</div>

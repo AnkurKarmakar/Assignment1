@@ -65,4 +65,38 @@ public class DAO {
 		arr.add(sal);
 		return arr;
 		}
+
+
+	public void add(int employeeid, String employeename, String designation, double salary) throws SQLException {
+		// TODO Auto-generated method stub
+		connect();
+		String sql = "insert into employee values("+employeeid+",'"+employeename+"','"+designation+"',"+salary+");";
+		statement.execute(sql);
+	}
+
+
+	public void delete(int employeeid) throws SQLException {
+		// TODO Auto-generated method stub
+		connect();
+		String sql = "delete from employee where employeeid="+employeeid+";";
+		statement.execute(sql);
+	}
+
+
+	public void update(int employeeid, String employeename, String designation, double salary) throws SQLException {
+		// TODO Auto-generated method stub
+		connect();
+		if(employeename.trim().isEmpty()==false) {
+			String sql = "update employee set employeename='"+employeename+"' where employeeid="+employeeid+";";
+			statement.execute(sql);
+		}
+		if(designation.trim().isEmpty()==false) {
+			String sql = "update employee set designation='"+designation+"' where employeeid="+employeeid+";";
+			statement.execute(sql);
+		}
+		if(salary!=0.0) {
+			String sql = "update employee set salary="+salary+" where employeeid="+employeeid+";";
+			statement.execute(sql);
+		}
+	}
 }

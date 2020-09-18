@@ -18,5 +18,17 @@ public class AppService {
 	public ArrayList<ArrayList<String>> getDataService() throws SQLException{
 		return (new DAO()).getData();
 	}
+	public void add(int employeeid, String employeename, String designation, double salary) throws SQLException {
+		// TODO Auto-generated method stub
+		(new DAO()).add(employeeid,employeename,designation,salary);
+	}
+	public void delete(int employeeid) throws SQLException {
+		// TODO Auto-generated method stub
+		(new DAO()).delete(employeeid);
+	}
+	public void update(int employeeid, String employeename, String designation, double salary) throws SQLException {
+		// TODO Auto-generated method stub
+		(new DAO()).update(employeeid,employeename,designation,salary);
+	}
 
 }
