@@ -13,7 +13,7 @@
 	<div class="container">
 		<nav class="navbar navbar-dark bg-dark fixed-top">
 			<div class="container">
-				<a href="#" class="navbar-brand">Employee database</a>
+				<a href="#" class="navbar-brand">Database Administrators</a>
 			</div>
 		</nav>
 	</div>
@@ -22,15 +22,14 @@
 		
 		<div class="card text-center border-secondary">
 			<div class="card-header text-white bg-secondary">
-				<strong>Employee details</strong>
+				<strong>Database Administrators Credentials</strong>
 			</div>
 			<div class="card-body">
 				<table border="2">
 				<tr>
-				<td>Employee ID</td>
-				<td>Employee Name</td>
-				<td>Designation</td>
-				<td>Salary</td>
+				<td>S.NO</td>
+				<td>Username</td>
+				<td>Password</td>
 				</tr>
 				<% 
 				ArrayList<ArrayList<String>> ar = (ArrayList<ArrayList<String>>)request.getAttribute("ar");
@@ -40,8 +39,7 @@
 <tr>
 <td><%=ar.get(0).get(i) %></td>
 <td><%=ar.get(1).get(i) %></td>
-<td><%=ar.get(2).get(i) %></td>
-<td><%=ar.get(3).get(i) %></td>
+<td>*****</td>
 </tr>
 <%
 				}
@@ -50,10 +48,9 @@
 </table>
 <table>
 <br>
-<tr><td><input type="button"  onclick="location.href='/add'" value="Add New Employee" >
-			</td><td><input type="button"  onclick="location.href='/delete'" value="Delete Employee" ></td>
-			<td><input type="button"  onclick="location.href='/update'" value="Update Employee" ></td></tr>
-	<tr><td><input type="button" onclick="location.href='/dbadmin'" value="View Database Admins"></td></tr>
+<tr><td><input type="button"  onclick="location.href='/addAdmin'" value="Add Admin" >
+			</td><td><input type="button"  onclick="location.href='/deleteAdmin'" value="Delete Admin" ></td></tr>
+
 </table>
 </div>
 

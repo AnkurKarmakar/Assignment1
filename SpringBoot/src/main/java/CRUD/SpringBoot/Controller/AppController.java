@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import CRUD.SpringBoot.Model.Add;
+import CRUD.SpringBoot.Model.AddAdmin;
 import CRUD.SpringBoot.Model.Delete;
+import CRUD.SpringBoot.Model.DeleteAdmin;
 import CRUD.SpringBoot.Model.Login;
 import CRUD.SpringBoot.Model.Update;
 import CRUD.SpringBoot.Service.AppService;
@@ -39,6 +41,47 @@ public class AppController {
 	public ModelAndView goToUpdatePage(Model model) {
 		model.addAttribute("update", new Update());
 		return new ModelAndView("update");
+	}
+	@RequestMapping(value = "/addAdmin", method = RequestMethod.GET)
+	public ModelAndView goToAddAdminPage(Model model) {
+		model.addAttribute("addAdmin", new AddAdmin());
+		return new ModelAndView("addAdmin");
+	}
+	@RequestMapping(value = "/deleteAdmin", method = RequestMethod.GET)
+	public ModelAndView goToDeleteAdminPage(Model model) {
+		model.addAttribute("deleteAdmin", new DeleteAdmin());
+		return new ModelAndView("deleteAdmin");
+	}
+	@RequestMapping(value = "/dbadmin", method = RequestMethod.GET)
+	public ModelAndView goToDBAPage(Model model) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		ArrayList<ArrayList<String>> ar = (new AppService()).getDBADataService();
+		mv.addObject("ar",ar);
+		mv.setViewName("dbadmin");
+		return mv;
+	}
+	@RequestMapping(value = "/DeleteAdminUser", method = RequestMethod.POST)
+	public ModelAndView goToAddAdminUser(@ModelAttribute("deleteAdmin") DeleteAdmin model, BindingResult result) throws SQLException {
+		String username = model.getUsername();
+		ModelAndView mv = new ModelAndView();
+		AppService ob = new AppService();
+		ob.deleteDBA(username);
+		ArrayList<ArrayList<String>> ar = (new AppService()).getDBADataService();
+		mv.addObject("ar",ar);
+		mv.setViewName("dbadmin");
+		return mv;
+	}
+	@RequestMapping(value = "/AddAdminUser", method = RequestMethod.POST)
+	public ModelAndView goToAddAdminUser(@ModelAttribute("addAdmin") AddAdmin model, BindingResult result) throws SQLException {
+		String username = model.getUsername();
+		String password = model.getPassword();
+		ModelAndView mv = new ModelAndView();
+		AppService ob = new AppService();
+		ob.addDBA(username,password);
+		ArrayList<ArrayList<String>> ar = (new AppService()).getDBADataService();
+		mv.addObject("ar",ar);
+		mv.setViewName("dbadmin");
+		return mv;
 	}
 	@RequestMapping(value = "/UpdateUser", method = RequestMethod.POST)
 	public ModelAndView goToUpdateUser(@ModelAttribute("update") Update model, BindingResult result) throws SQLException {
@@ -98,5 +141,6 @@ public class AppController {
 			
 		}
 	}
+	
 
 }

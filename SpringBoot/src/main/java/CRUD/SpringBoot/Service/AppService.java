@@ -30,5 +30,18 @@ public class AppService {
 		// TODO Auto-generated method stub
 		(new DAO()).update(employeeid,employeename,designation,salary);
 	}
+	public ArrayList<ArrayList<String>> getDBADataService() throws SQLException {
+		// TODO Auto-generated method stub
+		return (new DAO()).getDBAData();
+	}
+	public void addDBA(String username, String password) throws SQLException {
+		// TODO Auto-generated method stub
+		(new DAO()).addDBA(username,password);
+		
+	}
+	public void deleteDBA(String username) throws SQLException {
+		// TODO Auto-generated method stub
+		(new DAO()).deleteDBA(username);
+	}
 
 }

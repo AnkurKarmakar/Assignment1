@@ -99,4 +99,50 @@ public class DAO {
 			statement.execute(sql);
 		}
 	}
+
+
+	public ArrayList<ArrayList<String>> getDBAData() throws SQLException {
+		// TODO Auto-generated method stub
+		 connect();
+		 ArrayList<ArrayList<String>> arr=new ArrayList<ArrayList<String>>();
+		 ArrayList<String> sn=new ArrayList<String>();
+		 ArrayList<String> usr=new ArrayList<String>();
+		 ArrayList<String> pwd=new ArrayList<String>();
+		 String sql ="select * from admin";
+		//System.out.println(sql);
+		resultSet = statement.executeQuery(sql);
+			
+		while(resultSet.next()){
+			sn.add(Integer.toString(resultSet.getInt("sno")));
+			usr.add(resultSet.getString("username"));
+			pwd.add(resultSet.getString("password"));
+			}
+		arr.add(sn);
+		arr.add(usr);
+		arr.add(pwd);
+		return arr;
+	}
+
+
+	public void addDBA(String username, String password2) throws SQLException {
+		// TODO Auto-generated method stub
+		connect();
+		int index;
+		String sql = "select max(sno) as sno from admin;";
+		resultSet=statement.executeQuery(sql);
+		//System.out.println("before resultset");
+		resultSet.next();
+		index = resultSet.getInt("sno");
+		//System.out.println(index);
+		String sql1 = "insert into admin values("+(index+1)+",'"+username+"','"+password2+"');";
+		statement.execute(sql1);
+	}
+
+
+	public void deleteDBA(String username) throws SQLException {
+		// TODO Auto-generated method stub
+		connect();
+		String sql = "delete from admin where username='"+username+"';";
+		statement.execute(sql);
+	}
 }

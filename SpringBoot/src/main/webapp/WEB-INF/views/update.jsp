@@ -44,7 +44,7 @@
 			</div>
 			<div class="form-row">
 				<div class="col">
-					<button type="submit" class="btn btn-success btn-block">SUBMIT</button>
+					<button type="submit" class="btn btn-success btn-block">UPDATE</button>
 				</div>
 				<div class="col">
 					<button type="reset" class="btn btn-warning btn-block">RESET</button>
